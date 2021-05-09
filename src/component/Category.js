@@ -6,6 +6,7 @@ import FadeIn from "react-fade-in";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import axios from "axios";
 import Loading from "./Loading";
+import { api } from "../tools/const";
 
 const Category = () => {
   const [lastProducts, setLastProducts] = useState([]);
@@ -14,7 +15,7 @@ const Category = () => {
 
   useEffect(() => {
     const getLastProducts = async () => {
-      const res = await axios.get("/api/lastProducts");
+      const res = await axios.get(api + "/api/lastProducts");
       setLastProducts(res.data);
       setLoadingL(false);
     };

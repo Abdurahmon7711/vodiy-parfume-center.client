@@ -8,6 +8,7 @@ import SimpleModal from "./Modalbtn";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { api } from "../tools/const";
 
 const ShopCart = () => {
   const history = useHistory();
@@ -46,7 +47,7 @@ const ShopCart = () => {
 
   const addToCart = async (cart) => {
     await axios.patch(
-      "/user/addcart",
+      api + "/user/addcart",
       { cart },
       {
         headers: { Authorization: token },
@@ -92,7 +93,7 @@ const ShopCart = () => {
         setLoader(true);
         await axios
           .post(
-            "/api/payment",
+            api + "/api/payment",
             { cart, comment },
             {
               headers: { Authorization: token },
@@ -138,7 +139,6 @@ const ShopCart = () => {
                   <tr key={index} className="product-item">
                     <td className="product-item-first">
                       <div className="product-item-first-div">
-                        
                         <span className="product-item-first-div-span inner-span">
                           <img src={item.images.url} alt={item.title} />
                           <span>
@@ -172,7 +172,7 @@ const ShopCart = () => {
                             </button>
                           </span>
                         </span>
-                        <input type="text" placeholder="mahsulot turi"/>
+                        <input type="text" placeholder="mahsulot turi" />
                       </div>
                     </td>
                     <td className="product-item-second">
@@ -199,7 +199,6 @@ const ShopCart = () => {
                     {/* <div className="type-input">
                       <input type="text" name="type"/>
                     </div> */}
-                    
                   </tr>
                 ))
               )}

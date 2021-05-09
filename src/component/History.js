@@ -17,6 +17,7 @@ import { StoreContext } from "../Store/StoreG";
 import Loading from "./Loading";
 import Alert from "@material-ui/lab/Alert";
 import { date } from "../tools/functions";
+import { api } from "../tools/const";
 
 export default function ControlledAccordions() {
   const history = useHistory();
@@ -41,7 +42,7 @@ export default function ControlledAccordions() {
   const [token] = state.token;
   useEffect(() => {
     axios
-      .get("/user/history", {
+      .get(api + "/user/history", {
         headers: { Authorization: token },
       })
       .then((res) => {

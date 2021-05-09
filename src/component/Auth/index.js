@@ -4,6 +4,7 @@ import LockIcon from "@material-ui/icons/Lock";
 import Loader from "react-loader-spinner";
 import axios from "axios";
 import "./style-auth.css";
+import { api } from "../../tools/const";
 
 const Auth = () => {
   const [user, setUser] = useState({
@@ -22,7 +23,7 @@ const Auth = () => {
     setLoader(true)
     e.preventDefault();
     try {
-      await axios.post("/user/login", { ...user }).then((res) => {
+      await axios.post(api + "/user/login", { ...user }).then((res) => {
         if (res.data.user.role === 1) {
           toast.error("Siz foydalanuvchi emassiz !");
         } else {

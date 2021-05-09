@@ -3,6 +3,7 @@ import axios from "axios";
 import CategoriesAPI from "../api/CategoriesAPI";
 import ProductsAPI from "../api/ProductsAPI";
 import UserAPI from "../api/UserAPI";
+import { api } from "../tools/const";
 
 export const StoreContext = createContext();
 
@@ -16,7 +17,7 @@ const StoreG = (props) => {
     const Login = localStorage.getItem("Login");
     if (Login) {
       const refreshToken = async () => {
-        const res = await axios.get("/user/refresh_token");
+        const res = await axios.get(api + "/user/refresh_token");
 
         setToken(res.data.accesstoken);
         setTimeout(() => {

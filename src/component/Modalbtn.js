@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import { StoreContext } from "../Store/StoreG";
 import axios from "axios";
+import { api } from "../tools/const";
 
 function getModalStyle() {
   const top = 50;
@@ -34,7 +35,7 @@ export default function SimpleModal() {
 
   const addToCart = async (cart) => {
     await axios.patch(
-      "/user/addcart",
+      api + "/user/addcart",
       { cart },
       {
         headers: { Authorization: token },

@@ -7,6 +7,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import axios from "axios";
 import Loading from "./Loading";
 import Select from "react-select";
+import { api } from "../tools/const";
 
 function Main(props) {
   const state = useContext(StoreContext);
@@ -18,7 +19,7 @@ function Main(props) {
   useEffect(() => {
     const getProducts = async () => {
       const res = await axios.get(
-        `/api/products?limit=${100}&category=${
+        `${api}/api/products?limit=${100}&category=${
           props.match.params.id
         }&${sort}&title[regex]=${search}`
       );
